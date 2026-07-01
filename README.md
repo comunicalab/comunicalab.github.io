@@ -318,10 +318,11 @@ Após criar ou editar arquivos:
 ```bash
 cd /path/do/meu-site
 git init
+git config user.name "seu usuario"
 git add .
 git commit -m "Descrição da atualização"
-git remote add origin <url-do-repositorio>
-git push -u origin main
+git remote add origin url-do-repositorio
+git push -u origin master:main
 ```
 
 O GitHub Pages faz o build automaticamente. Em 1 a 2 minutos o site em `https://comunicalab.github.io` estará atualizado.
