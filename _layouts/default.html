@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    {% include head.html %}
+  </head>
+  <body class="site">
+    <a class="skip-link screen-reader-text" href="#content">Pular para o conteúdo</a>
+
+    {% include header.html %}
+
+    <div id="content" class="site-content">
+      <main id="main" class="site-main" role="main">
+        {{ content }}
+      </main>
+    </div>
+
+    {% include footer.html %}
+  </body>
+</html>

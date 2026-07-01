@@ -1,0 +1,92 @@
+---
+layout: default
+---
+<article class="entry trabalho">
+
+  <header class="entry-header">
+    {% if page.imagem %}
+    <div class="conecta-banner">
+      <img src="{{ page.imagem | relative_url }}" alt="{{ page.title }}">
+    </div>
+    {% endif %}
+
+    <h1 class="entry-title">{{ page.title }}</h1>
+  </header>
+
+  <div class="entry-content trabalho-meta">
+  
+    {% if page.descricao %}
+    <p class="trabalho-descricao">{{ page.descricao }}</p>
+    {% endif %}
+
+    {% if page.projeto %}
+    {% assign projeto_ref = site.projetos | where: "slug", page.projeto | first %}
+    {% unless projeto_ref %}
+      {% assign projeto_ref = site.projetos | where_exp: "p", "p.path contains page.projeto" | first %}
+    {% endunless %}
+    {% if projeto_ref %}
+    <p>
+      <strong class="conecta-intertitulo">Projeto</strong>
+      <a href="{{ projeto_ref.url | relative_url }}">{{ projeto_ref.titulo }}</a>
+    </p>
+    {% endif %}
+    {% endif %}
+
+    {% if page.uc %}
+    <p>
+      <strong class="conecta-intertitulo">Unidade Curricular</strong>
+      {{ page.uc }}
+    </p>
+    {% endif %}
+
+    {% if page.professores %}
+    <p>
+      <strong class="conecta-intertitulo">
+        {% if page.professores.size == 1 %}Professor{% else %}Professores{% endif %}
+      </strong>
+      {% for prof_ref in page.professores %}
+        {% assign prof = site.professores | where_exp: "p", "p.path contains prof_ref" | first %}
+        {% if prof %}
+        <a href="{{ prof.url | relative_url }}" class="conecta-autor">{{ prof.nome }}</a>{% unless forloop.last %}, {% endunless %}
+        {% else %}
+        <span class="conecta-autor">{{ prof_ref }}</span>{% unless forloop.last %}, {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </p>
+    {% endif %}
+
+    {% if page.alunos %}
+    <p>
+      <strong class="conecta-intertitulo">
+        {% if page.alunos.size == 1 %}Aluno{% else %}Alunos{% endif %}
+      </strong>
+      {% for aluno in page.alunos %}
+        <span class="conecta-autor">{{ aluno }}</span>{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    </p>
+    {% endif %}
+
+	<div class="entry-content">{{ content }}</div>
+
+    {% if page.link %}
+    <p>
+      <a href="{{ page.link }}" class="trabalho-link" target="_blank" rel="noopener noreferrer">
+        Ver trabalho →
+      </a>
+    </p>
+    {% endif %}
+
+  </div>
+
+  {% if page.tags %}
+  <footer class="entry-footer">
+    <span class="tags-links">
+      Assuntos:
+      {% for tag in page.tags %}
+      <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="tag">{{ tag }}</a>{% unless forloop.last %}{% endunless %}
+      {% endfor %}
+    </span>
+  </footer>
+  {% endif %}
+
+</article>

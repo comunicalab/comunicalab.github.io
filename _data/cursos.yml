@@ -1,0 +1,35 @@
+- slug: jornalismo
+  nome: Jornalismo
+  duracao: "4 anos / 8 semestres"
+  campi: [Mooca, Butantã]
+  turno: [manhã, noite]
+
+- slug: publicidade
+  nome: Publicidade e Propaganda
+  duracao: "4 anos / 8 semestres"
+  campi: [Mooca, Butantã, Paulista, Jabaquara, Santo Amaro, São Bernardo do Campo, Santana, Guarulhos]
+  turno: [manhã, noite]
+
+- slug: relacoes-publicas
+  nome: Relações Públicas
+  duracao: "3 anos / 6 semestres"
+  campi: [Mooca]
+  turno: [noite]
+
+- slug: radio-tv
+  nome: Rádio e TV
+  duracao: "3 anos / 6 semestres"
+  campi: [Mooca]
+  turno: [noite]
+
+- slug: cinema-audiovisual
+  nome: Cinema e Audiovisual
+  duracao: "4 anos / 8 semestres"
+  campi: [Mooca, Butantã]
+  turno: [manhã, noite]
+
+- slug: comunicacao-institucional
+  nome: Comunicação Institucional
+  duracao: "3 anos / 6 semestres"
+  campi: [Mooca]
+  turno: [noite]

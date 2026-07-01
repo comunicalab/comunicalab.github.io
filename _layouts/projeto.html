@@ -1,0 +1,70 @@
+---
+layout: default
+---
+<article class="entry projeto">
+
+  {% if page.imagem %}
+  <div class="conecta-banner">
+    <img src="{{ page.imagem | relative_url }}" alt="{{ page.titulo }}">
+  </div>
+  {% endif %}
+
+  <header class="entry-header">
+    {% if page.tipo %}
+    <span class="badge badge-{{ page.tipo }}">{{ page.tipo | replace: "-", " " }}</span>
+    {% endif %}
+    <h1 class="entry-title">{{ page.titulo }}</h1>
+    {% if page.ano_inicio %}<p class="entry-date">desde {{ page.ano_inicio }}</p>{% endif %}
+  </header>
+
+  <div class="entry-content">
+    {% if page.descricao %}<p class="trabalho-descricao">{{ page.descricao }}</p>{% endif %}
+    {{ content }}
+  </div>
+
+  {% if page.professores %}
+  <div class="trabalho-meta">
+    <p><span class="conecta-intertitulo">Professores responsáveis</span>
+      {% for prof_slug in page.professores %}
+        {% assign prof = site.professores | where_exp: "p", "p.path contains prof_slug" | first %}
+        {% if prof %}
+        <a href="{{ prof.url | relative_url }}" class="conecta-autor">{{ prof.nome }}</a>{% unless forloop.last %}, {% endunless %}
+        {% else %}
+        <span class="conecta-autor">{{ prof_slug }}</span>{% unless forloop.last %}, {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </p>
+  </div>
+  {% endif %}
+
+  {% assign trabalhos_do_projeto = site.trabalhos | where: "projeto", page.slug %}
+  {% if trabalhos_do_projeto.size > 0 %}
+  <section class="recent-section">
+    <h2 class="conecta-intertitulo">Trabalhos deste projeto</h2>
+    <ul class="entry-list">
+      {% for t in trabalhos_do_projeto %}
+      <li class="entry-item">
+        <span class="entry-date">Mostra {{ t.mostra }}</span>
+        <h3><a href="{{ t.url | relative_url }}">{{ t.title }}</a></h3>
+        <p class="conecta-linhafina">{{ t.uc }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if page.link and page.link != "" %}
+  <p><a href="{{ page.link }}" class="trabalho-link" target="_blank" rel="noopener">Ver projeto →</a></p>
+  {% endif %}
+
+  {% if page.tags %}
+  <footer class="entry-footer">
+    <p class="tags-links">
+      {% for tag in page.tags %}
+      <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+      {% endfor %}
+    </p>
+  </footer>
+  {% endif %}
+
+</article>

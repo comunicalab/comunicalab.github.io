@@ -1,0 +1,50 @@
+title: ComunicaLab
+description:  Comunicação e Artes da Universidade São Judas
+baseurl: ""
+url: "https://comunicalab.github.io"
+lang: pt-BR
+
+collections:
+  trabalhos:
+    output: true
+    permalink: /trabalhos/:name/
+  professores:
+    output: true
+    permalink: /professores/:name/
+  projetos:
+    output: true
+    permalink: /projetos/:name/
+  eventos:
+    output: true
+    permalink: /eventos/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "trabalhos"
+    values:
+      layout: trabalho
+  - scope:
+      path: ""
+      type: "professores"
+    values:
+      layout: professor
+  - scope:
+      path: ""
+      type: "projetos"
+    values:
+      layout: projeto
+  - scope:
+      path: ""
+      type: "eventos"
+    values:
+      layout: evento
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

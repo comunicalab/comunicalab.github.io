@@ -1,0 +1,570 @@
+/* === Design Tokens === */
+
+:root {
+    --color-primary:  #351c75;
+    --color-accent:   #674ea7;
+    --color-text:     #212529;
+    --color-muted:    #666;
+    --color-border:   #e0d6f5;
+    --color-bg:       #ffffff;
+    --color-tag-bg:   #f0ebff;
+}
+
+/* === Base === */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', 'Lato', sans-serif;
+}
+
+b, strong {
+    font-weight: 700;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* === Skip link === */
+
+.skip-link {
+    position: absolute;
+    left: -9999px;
+}
+
+.skip-link:focus {
+    left: 0;
+    top: 0;
+    z-index: 100;
+    background: var(--color-primary);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-shadow: none;
+}
+
+/* === Wrappers === */
+
+.site-header,
+.site-content,
+.site-footer {
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* === Header === */
+
+.site-header {
+    border-bottom: 2px solid var(--color-border);
+    padding-top: 1.5rem;
+    padding-bottom: 1.25rem;
+}
+
+.site-branding {
+    margin-bottom: 0.75rem;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.site-title a {
+    text-decoration: none;
+    border: none;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.site-title a:hover,
+.site-title a:focus {
+    color: var(--color-accent);
+}
+
+.site-title img {
+    height: 2rem;
+    width: auto;
+    flex-shrink: 0;
+}
+
+.conecta-description {
+    display: block;
+    text-transform: lowercase;
+    font-size: 0.9rem;
+    font-weight: 300;
+    margin: 0.2rem 0 0 2.7rem;
+    color: var(--color-accent);
+}
+
+/* === Navigation === */
+
+.main-navigation {
+    margin-top: 0.75rem;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+}
+
+.nav-menu a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus {
+    color: var(--color-accent);
+}
+
+.nav-menu .current-menu-item a {
+    font-weight: 700;
+    border-bottom: 2px solid var(--color-primary);
+}
+
+/* === Main content === */
+
+.site-content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* === Links === */
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-accent);
+}
+
+a img {
+    border: 0;
+}
+
+/* === Entry (posts e trabalhos) === */
+
+.entry {
+    margin-bottom: 3rem;
+}
+
+.entry-header {
+    margin-bottom: 1.5rem;
+}
+
+.entry-title {
+    font-size: 1.75rem;
+    color: var(--color-primary);
+    margin: 0.25rem 0 0.5rem;
+    line-height: 1.25;
+}
+
+.entry-date {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+}
+
+.entry-content {
+    line-height: 1.8;
+}
+
+.entry-content a {
+    font-weight: 700;
+}
+
+.entry-footer {
+    border-top: none;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+/* === Entry list (home, arquivo) === */
+
+.entry-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.entry-item {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.entry-item:last-child {
+    border-bottom: none;
+}
+
+.entry-item h2,
+.entry-item h3 {
+    margin: 0.25rem 0 0.5rem;
+    font-size: 1.2rem;
+    line-height: 1.3;
+}
+
+.entry-item h2 a,
+.entry-item h3 a {
+    color: var(--color-primary);
+}
+
+/* === Home === */
+
+.home .intro {
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 2rem;
+}
+
+.recent-section {
+    margin: 2.5rem 0;
+}
+
+.recent-section h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+}
+
+.recent-section > a {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* === Trabalho template === */
+
+.trabalho-meta > p {
+    margin: 0.75rem 0;
+}
+
+.trabalho-descricao {
+    margin-top: 1.25rem;
+    line-height: 1.75;
+    font-size: 1.05rem;
+}
+
+.trabalho-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--color-primary);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 2px;
+    font-size: 0.9rem;
+}
+
+.trabalho-link:hover,
+.trabalho-link:focus {
+    background: var(--color-accent);
+    color: #fff;
+}
+
+/* === Badges de categoria (eventos, projetos) === */
+
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.65rem;
+    border-radius: 2px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #fff;
+}
+
+.badge-eventos          { background: var(--color-primary); }
+.badge-ciclo            { background: #4a3c8c; }
+.badge-extensao         { background: var(--color-accent); }
+.badge-pesquisa         { background: #3d5a99; }
+.badge-parceria         { background: #555; }
+.badge-agencia          { background: var(--color-primary); }
+.badge-nucleo           { background: #3d5a99; }
+
+/* === Conecta custom classes (compatibilidade) === */
+
+.conecta-autor {
+    font-family: 'Lato', monospace;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.conecta-intertitulo {
+    font-size: 0.85rem;
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.6;
+    font-weight: 600;
+    color: var(--color-accent);
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+}
+
+.conecta-linhafina {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-muted);
+    margin: 0.25rem 0;
+}
+
+.conecta-banner {
+    max-width: 80%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+.conecta-banner img {
+    border: none;
+    max-width: 100%;
+}
+
+/* === Tags === */
+
+.tags-list,
+.tags-links {
+    font-size: 0.85rem;
+    color: var(--color-muted);
+    margin: 0.5rem 0 0;
+}
+
+.tag {
+    display: inline-block;
+    background: var(--color-tag-bg);
+    color: var(--color-primary);
+    padding: 0.15rem 0.5rem;
+    border-radius: 2px;
+    font-size: 0.78rem;
+    margin: 0.15rem 0.2rem 0.15rem 0;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+}
+
+.tag:hover,
+.tag:focus {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+/* === Tag index === */
+
+.tag-section {
+    margin: 2rem 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.tag-section h2 {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    margin: 0 0 0.75rem;
+}
+
+.tag-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tag-section li {
+    padding: 0.3rem 0;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+}
+
+.tag-section .entry-date {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+/* === Listagem geral (trabalhos, projetos, eventos) === */
+
+.lista-item {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.lista-item:last-child {
+    border-bottom: none;
+}
+
+.lista-item img {
+    margin-bottom: 0.75rem;
+}
+
+.lista-item h2 {
+    margin: 0.25rem 0 0.5rem;
+    font-size: 1.2rem;
+}
+
+.lista-item h2 a {
+    color: var(--color-primary);
+}
+
+/* Mostra (alias de lista-item para compatibilidade) */
+.mostra-item {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.mostra-item:last-child {
+    border-bottom: none;
+}
+
+.mostra-item img {
+    margin-bottom: 0.75rem;
+}
+
+/* === Seções de listagem com cabeçalho === */
+
+.section-heading {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 0.4rem;
+    margin: 2.5rem 0 0;
+}
+
+/* === Card de professor === */
+
+.professor-card {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.professor-card:last-child {
+    border-bottom: none;
+}
+
+.professor-foto {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--color-tag-bg);
+}
+
+.professor-info h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1.1rem;
+}
+
+.professor-info p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+/* === Footer === */
+
+.site-footer {
+    border-top: 2px solid var(--color-border);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 3rem;
+}
+
+.site-info {
+    font-size: 70%;
+    text-align: center;
+    color: var(--color-muted);
+    line-height: 1.8;
+}
+
+.site-info a {
+    color: var(--color-primary);
+}
+
+.site-info a:hover {
+    color: var(--color-accent);
+}
+
+.footer-cc {
+    max-width: 20px;
+    vertical-align: middle;
+}
+
+.footer-usjt {
+    max-width: 180px;
+    display: block;
+    margin: 1rem auto 0;
+}
+
+/* === Buttons === */
+
+button:hover,
+button:focus,
+button:active,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: #fff;
+}
+
+/* === Responsivo === */
+
+@media (max-width: 640px) {
+    .site-title {
+        font-size: 1.2rem;
+    }
+
+    .nav-menu {
+        gap: 0.4rem 1rem;
+    }
+
+    .professor-card {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

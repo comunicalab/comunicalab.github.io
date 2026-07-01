@@ -1,0 +1,45 @@
+---
+layout: default
+---
+<article class="entry evento">
+
+  {% if page.imagem %}
+  <div class="conecta-banner">
+    <img src="{{ page.imagem | relative_url }}" alt="{{ page.titulo }}">
+  </div>
+  {% endif %}
+
+  <header class="entry-header">
+    {% if page.categoria %}
+    <span class="badge badge-{{ page.categoria }}">{{ page.categoria | replace: "-", " " }}</span>
+    {% endif %}
+    <h1 class="entry-title">{{ page.titulo }}</h1>
+    <p class="entry-date">
+      {% if page.data %}
+        {{ page.data | date: "%d/%m/%Y" }}
+        {% if page.data_fim %} a {{ page.data_fim | date: "%d/%m/%Y" }}{% endif %}
+      {% endif %}
+      {% if page.local %} — {{ page.local }}{% endif %}
+    </p>
+  </header>
+
+  <div class="entry-content">
+    {% if page.descricao %}<p class="trabalho-descricao">{{ page.descricao }}</p>{% endif %}
+    {{ content }}
+  </div>
+
+  {% if page.link and page.link != "" %}
+  <p><a href="{{ page.link }}" class="trabalho-link" target="_blank" rel="noopener">Mais informações →</a></p>
+  {% endif %}
+
+  {% if page.tags %}
+  <footer class="entry-footer">
+    <p class="tags-links">
+      {% for tag in page.tags %}
+      <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+      {% endfor %}
+    </p>
+  </footer>
+  {% endif %}
+
+</article>

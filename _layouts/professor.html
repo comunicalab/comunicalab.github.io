@@ -1,0 +1,56 @@
+---
+layout: default
+---
+<article class="entry professor">
+
+  <header class="entry-header">
+    {% if page.foto %}
+    <img src="{{ page.foto | relative_url }}" alt="Foto de {{ page.nome }}" class="professor-foto" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:1rem;">
+    {% endif %}
+    <h1 class="entry-title">{{ page.nome }}</h1>
+    {% if page.coordenacao %}<p class="conecta-linhafina"><b>Coordenador</b></p>{% endif %}
+    {% if page.titulacao %}<p class="conecta-linhafina">{{ page.titulacao }}</p>{% endif %}
+    {% if page.email %}<p class="conecta-linhafina"><a href="mailto:{{ page.email }}">{{ page.email }}</a></p>{% endif %}
+    {% if page.lattes and page.lattes != "" %}<p class="conecta-linhafina"><a href="{{ page.lattes }}" target="_blank" rel="noopener">Currículo Lattes</a></p>{% endif %}
+    {% if page.linkedin and page.linkedin != "" %}<p class="conecta-linhafina"><a href="{{ page.linkedin }}" target="_blank" rel="noopener">Perfil no LinkedIn</a></p>{% endif %}
+	{% if page.portfolio and page.portfolio != "" %}<p class="conecta-linhafina"><a href="{{ page.portfolio }}" target="_blank" rel="noopener">Link do portfólio</a></p>{% endif %}
+  </header>
+
+  {% if page.content and page.content != "" %}
+  <div class="entry-content">{{ content }}</div>
+  {% endif %}
+
+  {% assign slug = page.path | remove: "_professores/" | remove: ".md" %}
+
+  {% assign trabalhos_do_prof = site.trabalhos | where_exp: "t", "t.professores contains slug" %}
+  {% if trabalhos_do_prof.size > 0 %}
+  <section class="recent-section">
+    <h2 class="conecta-intertitulo">Trabalhos</h2>
+    <ul class="entry-list">
+      {% for t in trabalhos_do_prof %}
+      <li class="entry-item">
+        <span class="entry-date">{{ t.mostra }}</span>
+        <h3><a href="{{ t.url | relative_url }}">{{ t.title }}</a></h3>
+        <p class="conecta-linhafina">{{ t.uc }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% assign projetos_do_prof = site.projetos | where_exp: "p", "p.professores contains slug" %}
+  {% if projetos_do_prof.size > 0 %}
+  <section class="recent-section">
+    <h2 class="conecta-intertitulo">Projetos</h2>
+    <ul class="entry-list">
+      {% for p in projetos_do_prof %}
+      <li class="entry-item">
+        <h3><a href="{{ p.url | relative_url }}">{{ p.titulo }}</a></h3>
+        <p class="conecta-linhafina">{{ p.tipo }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+</article>

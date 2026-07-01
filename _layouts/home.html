@@ -1,0 +1,71 @@
+---
+layout: default
+---
+<div class="home">
+
+  <section class="intro">
+    {{ content }}
+  </section>
+
+  {% if site.projetos.size > 0 %}
+  <section class="recent-section">
+    <h2 class="conecta-intertitulo">Projetos em Destaque</h2>
+    <ul class="entry-list">
+      {% assign projetos_destaque = site.projetos | sort: "ano_inicio" | reverse %}
+      {% for projeto in projetos_destaque limit:3 %}
+      <li class="entry-item">
+        {% if projeto.tipo %}<span class="badge badge-{{ projeto.tipo }}" style="margin-bottom:0.4rem;">{{ projeto.tipo | replace: "-", " " }}</span>{% endif %}
+        <h3><a href="{{ projeto.url | relative_url }}">{{ projeto.titulo }}</a></h3>
+        {% if projeto.descricao %}<p>{{ projeto.descricao | truncate: 140 }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <a href="{{ '/projetos/' | relative_url }}">Ver todos os projetos →</a>
+  </section>
+  {% endif %}
+
+  {% if site.eventos.size > 0 %}
+  <section class="recent-section">
+    <h2 class="conecta-intertitulo">Eventos</h2>
+    <ul class="entry-list">
+      {% assign eventos_recentes = site.eventos | sort: "data" | reverse %}
+      {% for evento in eventos_recentes limit:3 %}
+      <li class="entry-item">
+        <span class="entry-date">{{ evento.data | date: "%d/%m/%Y" }}</span>
+        {% if evento.categoria %}<span class="badge badge-{{ evento.categoria }}" style="margin-left:0.5rem;">{{ evento.categoria | replace: "-", " " }}</span>{% endif %}
+        <h3><a href="{{ evento.url | relative_url }}">{{ evento.titulo }}</a></h3>
+        {% if evento.local %}<p class="conecta-linhafina">{{ evento.local }}</p>{% endif %}
+        {% if evento.descricao %}<p>{{ evento.descricao | truncate: 120 }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <a href="{{ '/eventos/' | relative_url }}">Ver todos os eventos →</a>
+  </section>
+  {% endif %}
+
+  {% if site.trabalhos.size > 0 %}
+  <section class="recent-section">
+    <h2 class="conecta-intertitulo">Trabalhos Recentes</h2>
+    <ul class="entry-list">
+      {% assign trabalhos_recentes = site.trabalhos | sort: "date" | reverse %}
+      {% for trabalho in trabalhos_recentes limit:3 %}
+      <li class="entry-item">
+        <span class="entry-date">{{ trabalho.projeto }}</span>
+        <h3><a href="{{ trabalho.url | relative_url }}">{{ trabalho.title }}</a></h3>
+        <p class="conecta-linhafina">{{ trabalho.uc }}</p>
+        {% if trabalho.descricao %}<p>{{ trabalho.descricao | truncate: 140 }}</p>{% endif %}
+        {% if trabalho.tags %}
+        <p class="tags-list">
+          {% for tag in trabalho.tags %}
+          <a href="{{ '/tags/' | relative_url }}#{{ tag | slugify }}" class="tag">{{ tag }}</a>
+          {% endfor %}
+        </p>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    <a href="{{ '/trabalhos/' | relative_url }}">Ver todos os trabalhos →</a>
+  </section>
+  {% endif %}
+  
+</div>

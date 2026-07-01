@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<article class="entry tag-page">
+
+  <header class="entry-header">
+    <h1 class="entry-title">{{ page.title }}</h1>
+    <p class="conecta-linhafina">#{{ page.tag }}</p>
+  </header>
+
+  <div class="entry-content">
+    {% assign all_docs = site.posts | concat: site.trabalhos | concat: site.projetos | concat: site.eventos %}
+    {% assign itens = all_docs | where_exp: "doc", "doc.tags contains page.tag" %}
+
+    {% if itens.size > 0 %}
+    <ul class="entry-list">
+      {% for doc in itens %}
+      <li class="lista-item">
+        <span class="entry-date">{{ doc.date | default: doc.data | date: "%d/%m/%Y" }}</span>
+        <h2><a href="{{ doc.url | relative_url }}">{{ doc.title | default: doc.titulo }}</a></h2>
+        {% if doc.descricao %}<p>{{ doc.descricao | truncate: 200 }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Nenhum conteúdo com esta tag ainda.</p>
+    {% endif %}
+  </div>
+
+  <p><a href="{{ '/tags/' | relative_url }}">&larr; Ver todas as tags</a></p>
+
+</article>
